@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Edlan So — Portfolio</title>
+<meta name="description" content="Edlan So — Nanotechnology Engineering student (University of Waterloo). Research, data analysis, healthcare IT, web development." />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa4b2;
+    --accent:#06b6d4; /* teal */
+    --glass: rgba(255,255,255,0.03);
+    --glass-2: rgba(255,255,255,0.02);
+    --white:#e6eef6;
+    --radius:14px;
+    --max-width:1100px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background:
+      radial-gradient(1200px 400px at 10% 10%, rgba(6,182,212,0.06), transparent 6%),
+      radial-gradient(900px 300px at 90% 90%, rgba(99,102,241,0.03), transparent 10%),
+      var(--bg);
+    color:var(--white);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    padding:40px 20px;
+  }
+
+  .container{
+    max-width:var(--max-width);
+    margin:0 auto;
+  }
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:28px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--white);
+  }
+  .logo{
+    width:56px;height:56px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),#7c3aed);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--card);
+    box-shadow:0 6px 18px rgba(2,6,23,0.6);
+    flex-shrink:0;
+  }
+  .brand h1{font-size:1rem;margin:0}
+  .brand p{font-size:0.8rem;margin:0;color:var(--muted)}
+
+  nav{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+
+  .nav-link{
+    color:var(--muted);
+    text-decoration:none;
+    padding:8px 10px;
+    border-radius:10px;
+    font-size:0.95rem;
+  }
+  .nav-link:hover{color:var(--white);background:var(--glass)}
+
+  .cta{
+    background:linear-gradient(90deg,var(--accent),#7c3aed);
+    color:#021025;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;
+    box-shadow:0 6px 18px rgba(6,182,212,0.08);
+  }
+
+  main{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+  @media (max-width:980px){ main{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start} }
+
+  /* Left column (hero, projects) */
+  .card{
+    background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+  }
+
+  .hero{
+    display:flex;gap:18px;
+    align-items:flex-start;
+  }
+  .avatar{
+    width:108px;height:108px;border-radius:16px;flex-shrink:0;
+    background:linear-gradient(180deg,#0b1220,#071025);
+    display:flex;align-items:center;justify-content:center;font-weight:700;
+    font-size:30px;color:var(--muted);border:1px solid rgba(255,255,255,0.03);
+  }
+  .hero h2{margin:0;font-size:1.4rem}
+  .hero p.lead{margin:8px 0 0;color:var(--muted);font-size:0.95rem;max-width:60ch}
+  .meta{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .pill{background:var(--glass-2);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:0.85rem}
+
+  /* sections */
+  section + section{margin-top:18px}
+  h3.section-title{margin:0 0 12px 0;font-size:1rem;color:var(--accent)}
+
+  /* Skills */
+  .skills{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;color:var(--white);font-size:0.85rem;border:1px solid rgba(255,255,255,0.02)}
+
+  /* Projects grid */
+  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media (max-width:680px){ .projects{grid-template-columns:1fr} }
+
+  .project{
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.012));
+    padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);
+  }
+  .project h4{margin:0 0 8px 0}
+  .project p{margin:0;color:var(--muted);font-size:0.92rem}
+  .tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .tag{font-size:0.8rem;padding:6px 8px;background:rgba(255,255,255,0.02);border-radius:8px;color:var(--muted)}
+
+  /* right column */
+  aside{
+    position:relative;
+  }
+  .profile{
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .contact-list{display:flex;flex-direction:column;gap:6px}
+  .contact-list a{text-decoration:none;color:var(--muted);font-size:0.95rem}
+  .contact-list a:hover{color:var(--white)}
+
+  .experience{display:flex;flex-direction:column;gap:12px}
+  .job{padding:10px;border-radius:10px;background:var(--glass)}
+  .job h4{margin:0;font-size:0.95rem}
+  .job p{margin:6px 0 0 0;color:var(--muted);font-size:0.9rem}
+
+  footer{margin-top:28px;text-align:center;color:var(--muted);font-size:0.9rem}
+  .small{font-size:0.86rem;color:var(--muted)}
+
+  /* contact form */
+  form .row{display:flex;gap:8px}
+  form input, form textarea{
+    width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+    background:transparent;color:var(--white);
+  }
+  form button{
+    padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7c3aed);border:0;color:#021025;font-weight:700;
+  }
+
+  /* subtle animations */
+  .fade-up{opacity:0;transform:translateY(8px);transition:all 500ms ease}
+  .fade-up.visible{opacity:1;transform:none}
+
+  /* accessible focus */
+  a:focus, button:focus, input:focus, textarea:focus{
+    outline:3px solid rgba(6,182,212,0.18);outline-offset:3px;border-radius:8px;
+  }
+
+  /* tiny responsive tweaks */
+  @media (max-width:480px){ .avatar{width:84px;height:84px} .logo{width:48px;height:48px} }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <a class="brand" href="#top" aria-label="Edlan So homepage">
+        <div class="logo" aria-hidden="true">ES</div>
+        <div>
+          <h1>Edlan So</h1>
+          <p>Nanotechnology Engineering — University of Waterloo</p>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="cta" href="#resume" id="resumeBtn">Download Resume</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <div>
+        <section class="card hero" id="about">
+          <div class="avatar" aria-hidden="true">E S</div>
+          <div>
+            <h2>Hello — I am Edlan</h2>
+            <p class="lead">I’m a Nanotechnology Engineering student at the University of Waterloo. I work at the intersection of research, data analysis, and healthcare IT — building data-driven insights, automations, and technical documentation to support evidence-based decisions.</p>
+
+            <div class="meta">
+              <span class="pill">Python • SQL • MATLAB</span>
+              <span class="pill">Healthcare IT • Meditech</span>
+              <span class="pill">Web: HTML/CSS/JS</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <h3 class="section-title">Selected Projects</h3>
+          <div class="projects" id="projects">
+            <article class="project fade-up">
+              <h4>Microplastic Filtration Study</h4>
+              <p>Designed experiments and analyzed filtration efficiency of wood-fiber filters. Managed datasets, applied isotherm models, and visualized results using Python & Excel.</p>
+              <div class="tags"><span class="tag">Python</span><span class="tag">UV-Vis</span><span class="tag">Data Analysis</span></div>
+            </article>
+
+            <article class="project fade-up">
+              <h4>Meditech CPOE Support & Web Updates</h4>
+              <p>Provided live system support, documented issues, and trained staff during implementations. Maintained web content using HTML, CSS, and JavaScript.</p>
+              <div class="tags"><span class="tag">Meditech</span><span class="tag">HTML/CSS/JS</span><span class="tag">Training</span></div>
+            </article>
+
+            <article class="project fade-up">
+              <h4>Data Pipeline & Dashboard Prototype</h4>
+              <p>Built ETL scripts to clean experimental survey data and prototyped dashboards for stakeholder reporting using Excel and Python. Improved reporting speed and repeatability.</p>
+              <div class="tags"><span class="tag">ETL</span><span class="tag">Dashboards</span><span class="tag">Automation</span></div>
+            </article>
+
+            <article class="project fade-up">
+              <h4>Applied Research — Medical Tech Evaluation</h4>
+              <p>Collaborated on a medical tech assessment project, synthesized literature, and co-authored reports; completed Azure AI fundamentals (AZ-900, AI-900).</p>
+              <div class="tags"><span class="tag">Azure</span><span class="tag">Research</span><span class="tag">Report Writing</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px" id="skills">
+          <h3 class="section-title">Skills & Tools</h3>
+          <div class="skills" aria-hidden="false">
+            <span class="chip">Python</span>
+            <span class="chip">SQL (self-taught)</span>
+            <span class="chip">MATLAB</span>
+            <span class="chip">Excel (Power Query, Pivot Tables)</span>
+            <span class="chip">HTML • CSS • JavaScript</span>
+            <span class="chip">Azure • PyTorch • LLM</span>
+            <span class="chip">Meditech • REDCap</span>
+            <span class="chip">SolidWorks • Blender</span>
+            <span class="chip">MS Visio</span>
+            <span class="chip">Git • GitHub</span>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px" id="resume">
+          <h3 class="section-title">Resume & Contact</h3>
+          <p class="small">Download a PDF version of my resume or contact me directly. (Replace the resume link at the top with your real PDF file.)</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <a class="cta" href="#" id="downloadResume">Download Resume (placeholder)</a>
+            <a class="nav-link" href="mailto:e5so@uwaterloo.ca">e5so@uwaterloo.ca</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <aside>
+        <div class="card profile">
+          <h3 class="section-title">Contact</h3>
+          <div class="contact-list">
+            <a href="mailto:e5so@uwaterloo.ca">e5so@uwaterloo.ca</a>
+            <a href="tel:+16476767026">(647) 676-7026</a>
+            <a href="https://linkedin.com/in/edlan-so" target="_blank" rel="noopener">linkedin.com/in/edlan-so</a>
+            <a href="#" id="githubLink">github.com/your-username</a>
+          </div>
+
+          <h3 class="section-title" style="margin-top:14px">Experience</h3>
+          <div class="experience">
+            <div class="job">
+              <h4>IT CPOE Project Assistant — Oak Valley Health</h4>
+              <p>Provided live support for Meditech CPOE, documentation, staff training, and maintained web content (HTML/CSS/JS).</p>
+            </div>
+
+            <div class="job">
+              <h4>Lab Research Assistant — University of Waterloo</h4>
+              <p>Microplastic filtration research: experiment design, data analysis (Python), and presenting results to faculty.</p>
+            </div>
+
+            <div class="job">
+              <h4>Medical Research Assistant — University of Waterloo</h4>
+              <p>Evaluated medical tech, authored reports, and completed Azure AI certifications (AZ-900, AI-900).</p>
+            </div>
+          </div>
+
+          <h3 class="section-title" style="margin-top:14px">Education</h3>
+          <p class="small">B.S. Nanotechnology Engineering — University of Waterloo (Sept 2023 – Present)</p>
+
+          <h3 class="section-title" style="margin-top:14px">Languages</h3>
+          <p class="small">English • Cantonese • Mandarin</p>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3 class="section-title">Get in touch</h3>
+          <form id="contactForm" aria-label="Contact form">
+            <div style="margin-bottom:8px">
+              <label class="small" for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div style="margin-bottom:8px">
+              <label class="small" for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div style="margin-bottom:8px">
+              <label class="small" for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Short message" required></textarea>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button type="submit">Send</button>
+              <div id="formMsg" class="small" aria-live="polite" style="color:var(--muted)"></div>
+            </div>
+          </form>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer>
+      <div class="small">© <strong>Edlan So</strong> — Nanotechnology Engineering, University of Waterloo · Built with HTML, CSS & JavaScript</div>
+    </footer>
+  </div>
+
+<script>
+  // small JS: reveal fade-up elements, contact form handler, simple download placeholder
+  document.addEventListener('DOMContentLoaded', function(){
+    // Reveal animation for project cards
+    const fades = Array.from(document.querySelectorAll('.fade-up'));
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('visible'); }
+      });
+    }, {threshold:0.12});
+    fades.forEach(f => io.observe(f));
+
+    // contact form handler (demo: does not send — replace with endpoint)
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMsg');
+    form.addEventListener('submit', (ev)=>{
+      ev.preventDefault();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if(!name || !email || !message){ msg.textContent = 'Please fill all fields.'; return; }
+      msg.textContent = 'Message prepared. (Demo — integrate your backend or mailto link)';
+      form.reset();
+      setTimeout(()=> msg.textContent = '', 4000);
+    });
+
+    // resume/download placeholder (replace href to actual file)
+    document.getElementById('downloadResume').addEventListener('click', function(e){
+      e.preventDefault();
+      alert('Replace this placeholder link with your resume PDF path. (e.g., /assets/Edlan_So_Resume.pdf)');
+    });
+
+    // placeholder github link update
+    const gh = document.getElementById('githubLink');
+    gh.addEventListener('click', function(e){
+      // if left as placeholder, prevent navigating to '#'
+      if(gh.href.endsWith('#')){ e.preventDefault(); alert('Replace github link with your profile URL.'); }
+    });
+  });
+</script>
+</body>
+</html>
